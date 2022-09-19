@@ -4,5 +4,7 @@ FactoryBot.define do
     email { 'test@example.com' }
     password { 'foobar' }
     password_confirmation { 'foobar' }
+    # 下記未検証
+    # password_digest { <%= User.digest('foobar') %> }
   end
 end

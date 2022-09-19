@@ -31,6 +31,8 @@ Capybara.register_driver :remote_chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: caps)
 end
 
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
@@ -38,6 +40,7 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods
+  config.include LoginSupport
 
   [:system, :view, :request].each do |type|
     config.include ::Rails::Controller::Testing::TestProcess, type: type

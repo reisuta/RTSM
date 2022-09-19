@@ -10,6 +10,21 @@ RSpec.describe 'Sessions', type: :request do
     end
   end
 
+  describe 'remember機能を使ってログイン' do
+    it 'remember on' do
+      log_in_as(user, remember_me: '1')
+      expect(!session[:user_id].blank?).to eq true
+      expect(!cookies[:remember_token].blank?).to eq true
+    end
+
+    it 'remember off' do
+      log_in_as(user, remember_me: '1')
+      delete logout_path
+      log_in_as(user, remember_me: '0')
+      expect(cookies[:remember_token].blank?).to eq true
+    end
+  end
+
   describe 'POST /login' do
     it 'login' do
       post login_path, params: { session: { email: 'test@example.com', password: 'foobar' } }

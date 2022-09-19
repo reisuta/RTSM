@@ -3,6 +3,9 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs np
 RUN npm install --global yarn
 RUN mkdir /myapp
 WORKDIR /myapp
+ADD package.json /myapp/package.json
+RUN yarn add jquery@3.4.1 bootstrap@3.4.1
+
 ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install

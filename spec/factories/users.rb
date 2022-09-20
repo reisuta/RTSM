@@ -4,6 +4,9 @@ FactoryBot.define do
     email { 'test@example.com' }
     password { 'foobar' }
     password_confirmation { 'foobar' }
+    admin { true }
+    activated { true }
+    activated_at { Time.zone.now }
     # 下記未検証
     # password_digest { <%= User.digest('foobar') %> }
   end
@@ -13,5 +16,7 @@ FactoryBot.define do
     email { 'mike@gmailgmail.com' }
     password { 'foobar' }
     password_confirmation { 'foobar' }
+    activated { true }
+    activated_at { Time.zone.now }
   end
 end

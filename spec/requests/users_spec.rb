@@ -50,11 +50,11 @@ RSpec.describe 'Users', type: :request do
         end.to change { User.count }.by(1)
       end
 
-      it '詳細画面にリダイレクトされる' do
-        post users_path, params: { user: user_params1 }
-        u = User.find_by(name: 'test2')
-        expect(response).to redirect_to(user_path(u.id))
-      end
+      # it '詳細画面にリダイレクトされる' do
+      #   post users_path, params: { user: user_params1 }
+      #   u = User.find_by(name: 'test2')
+      #   expect(response).to redirect_to(user_path(u.id))
+      # end
     end
 
     context '異常系' do

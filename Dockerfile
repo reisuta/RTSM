@@ -1,5 +1,5 @@
 FROM ruby:2.7
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs npm postgresql-client
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs npm postgresql-client imagemagick
 RUN npm install --global yarn
 RUN mkdir /myapp
 WORKDIR /myapp
